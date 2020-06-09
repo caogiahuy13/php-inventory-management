@@ -85,7 +85,7 @@
               <th scope="col">Name</th>
               <th scope="col">Description</th>
               <th scope="col">Quantity</th>
-              <!-- <th scope="col">Actions</th> -->
+              <th scope="col">Actions</th>
             </tr>
           </thead>
           <tbody>
@@ -94,7 +94,7 @@
               <td>Mark</td>
               <td>Otto</td>
               <td>@mdo</td>
-              <!-- <td>
+              <td>
                 <button type="button" class="btn btn-primary">
                   <i class="far fa-eye"></i>
                 </button>
@@ -104,7 +104,7 @@
                 <button type="button" class="btn btn-danger">
                   <i class="far fa-trash-alt"></i>
                 </button>
-              </td> -->
+              </td>
             </tr>
             <?php
               $username = "root";
@@ -123,11 +123,17 @@
 
               if ($result->num_rows > 0) {
                 while($row = $result->fetch_assoc()) {
+                  $href = "./arrival.php?id=".$row["product_id"]."&name=".$row["name"].
+                          "&description=".$row["description"]."&quantity=".$row["quantity"]."";
+
                   echo "<tr>
                           <td scope=\"row\">".$row["product_id"]."</td>
                           <td>".$row["name"]."</td>
                           <td>".$row["description"]."</td>
                           <td>".$row["quantity"]."</td>
+                          <td>
+                            <a class=\"btn btn-primary\" href=\"".$href."\" role=\"button\">Link</a>
+                          </td>
                         </tr>";
                 }
               } else {
