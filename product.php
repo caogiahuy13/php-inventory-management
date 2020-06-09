@@ -81,20 +81,20 @@
         <table class="table">
           <thead class="thead-dark">
             <tr>
-              <th scope="col">#</th>
-              <th scope="col">First</th>
-              <th scope="col">Last</th>
-              <th scope="col">Handle</th>
-              <th scope="col">Actions</th>
+              <th scope="col">ID</th>
+              <th scope="col">Name</th>
+              <th scope="col">Description</th>
+              <th scope="col">Quantity</th>
+              <!-- <th scope="col">Actions</th> -->
             </tr>
           </thead>
           <tbody>
             <tr>
-              <th scope="row">1</th>
+              <th>1</th>
               <td>Mark</td>
               <td>Otto</td>
               <td>@mdo</td>
-              <td>
+              <!-- <td>
                 <button type="button" class="btn btn-primary">
                   <i class="far fa-eye"></i>
                 </button>
@@ -104,47 +104,43 @@
                 <button type="button" class="btn btn-danger">
                   <i class="far fa-trash-alt"></i>
                 </button>
-              </td>
+              </td> -->
             </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Jacob</td>
-              <td>Thornton</td>
-              <td>@fat</td>
-              <td>
-                <button type="button" class="btn btn-primary">
-                  <i class="far fa-eye"></i>
-                </button>
-                <button type="button" class="btn btn-success">
-                  <i class="fas fa-edit"></i>
-                </button>
-                <button type="button" class="btn btn-danger">
-                  <i class="far fa-trash-alt"></i>
-                </button>
-              </td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td>Larry</td>
-              <td>the Bird</td>
-              <td>@twitter</td>
-              <td>
-                <button type="button" class="btn btn-primary">
-                  <i class="far fa-eye"></i>
-                </button>
-                <button type="button" class="btn btn-success">
-                  <i class="fas fa-edit"></i>
-                </button>
-                <button type="button" class="btn btn-danger">
-                  <i class="far fa-trash-alt"></i>
-                </button>
-              </td>
-            </tr>
+            <?php
+              $username = "root";
+              $password = "";
+              $server   = "localhost";
+              $dbname   = "inventory_management";
+              $connect = new mysqli($server, $username, $password, $dbname);
+
+              if ($connect->connect_error) {
+                  die("No connection:" . $conn->connect_error);
+                  exit();
+              }
+
+              $sql = "SELECT * FROM product";
+              $result = $connect->query($sql);
+
+              if ($result->num_rows > 0) {
+                while($row = $result->fetch_assoc()) {
+                  echo "<tr>
+                          <td scope=\"row\">".$row["product_id"]."</td>
+                          <td>".$row["name"]."</td>
+                          <td>".$row["description"]."</td>
+                          <td>".$row["quantity"]."</td>
+                        </tr>";
+                }
+              } else {
+                echo "0 results";
+              }
+              
+              $connect->close();
+            ?>
           </tbody>
         </table>
       </div>
     </div>
-
+    
     <?php 
       $username = "root";
       $password = "";
