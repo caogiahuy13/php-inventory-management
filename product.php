@@ -89,23 +89,6 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th>1</th>
-              <td>Mark</td>
-              <td>Otto</td>
-              <td>@mdo</td>
-              <td>
-                <button type="button" class="btn btn-primary">
-                  <i class="far fa-eye"></i>
-                </button>
-                <button type="button" class="btn btn-success">
-                  <i class="fas fa-edit"></i>
-                </button>
-                <button type="button" class="btn btn-danger">
-                  <i class="far fa-trash-alt"></i>
-                </button>
-              </td>
-            </tr>
             <?php
               $username = "root";
               $password = "";
